@@ -1,0 +1,34 @@
+flowchart LR
+    actorAnonyme(["👤 Citoyen<br/>non authentifié"])
+    actorAuth(["👤 Citoyen<br/>authentifié"])
+
+    subgraph Systeme["Application de prise de rendez-vous administratif"]
+        uc1(["S'inscrire"])
+        uc2(["Se connecter"])
+        uc3(["Rechercher une administration"])
+        uc4(["Consulter les services<br/>d'une administration"])
+        uc5(["Consulter les créneaux<br/>disponibles"])
+        uc6(["Prendre un rendez-vous"])
+        uc7(["Recevoir un ticket<br/>avec QR code"])
+        uc8(["Consulter l'historique<br/>des rendez-vous"])
+        uc9(["Annuler un rendez-vous"])
+        uc10(["Consulter son profil"])
+        uc11(["Se déconnecter"])
+    end
+
+    actorAnonyme --> uc1
+    actorAnonyme --> uc2
+
+    actorAuth --> uc3
+    actorAuth --> uc4
+    actorAuth --> uc6
+    actorAuth --> uc8
+    actorAuth --> uc9
+    actorAuth --> uc10
+    actorAuth --> uc11
+
+    uc3 --> uc4
+    uc4 --> uc5
+    uc6 -. inclut .-> uc5
+    uc6 -. inclut .-> uc7
+    uc9 -. étend .-> uc8

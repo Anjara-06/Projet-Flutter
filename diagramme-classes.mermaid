@@ -1,0 +1,57 @@
+classDiagram
+    class Utilisateur {
+        +int id
+        +String nom
+        +String prenom
+        +String email
+        -String motDePasse
+        +String telephone
+        +DateTime dateCreation
+    }
+
+    class Administration {
+        +int id
+        +String nom
+        +String adresse
+        +String ville
+        +String horaires
+        +String icone
+    }
+
+    class Service {
+        +int id
+        +String nom
+        +String description
+        +int dureeMinutes
+    }
+
+    class Creneau {
+        +int id
+        +Date date
+        +Time heureDebut
+        +Time heureFin
+        +bool disponible
+    }
+
+    class RendezVous {
+        +int id
+        +String numeroRdv
+        +String codeQr
+        +String statut
+        +DateTime dateCreation
+        +annuler() void
+    }
+
+    class Notification {
+        +int id
+        +String message
+        +DateTime dateEnvoi
+        +bool lue
+    }
+
+    Utilisateur "1" --> "0..*" RendezVous : prend
+    Administration "1" --> "0..*" Service : propose
+    Service "1" --> "0..*" Creneau : possède
+    Creneau "1" --> "0..1" RendezVous : réservé par
+    Utilisateur "1" --> "0..*" Notification : reçoit
+    RendezVous "0..1" --> "0..*" Notification : génère

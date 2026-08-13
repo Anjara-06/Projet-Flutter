@@ -1,0 +1,19 @@
+# --- Backend (Node.js) ---
+backend/node_modules/
+backend/.env
+
+# --- Éditeurs ---
+.vscode/
+.idea/
+*.iml
+
+# --- Système ---
+.DS_Store
+Thumbs.db
+
+# --- Divers ---
+*.log
+
+# Note : le dossier rdv_admin_app/ a déjà son propre .gitignore
+# généré automatiquement par Flutter (build/, .dart_tool/, etc.)
+# — pas besoin de le dupliquer ici, Git le respecte automatiquement.
